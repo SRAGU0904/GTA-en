@@ -1,0 +1,333 @@
+body{
+    font-family:'Microsoft YaHei UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+#main{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+#head{
+    width: 100%;
+    height:200px;
+    background-color: maroon;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    overflow: hidden;
+}
+#head-title{
+    font-size: 48px;
+    color:white;
+    margin-bottom: 10px;
+    letter-spacing:15px;
+}
+#head-title-en{
+    font-size: 38px;
+    color:white;
+    margin-bottom: 10px;
+    letter-spacing:5px;
+}
+#head-subtitle{
+    font-size: 25px;
+    color:white;
+    padding-bottom: 10px;
+    letter-spacing:1px;
+
+}
+#head-subtitle2{
+    font-size: 20px;
+    color:white;
+}
+.ordinary-excessive{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.ordinary-excessive-card {
+    width: 70%;
+    background-color: rgba(181, 179, 179, 0);
+    border-radius: 5px;
+    letter-spacing: 2px;
+    padding: 10px;
+    margin: 20px;
+    line-height: 29px;
+    font-size: 19px;
+    text-align: justify;
+    /*box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;*/
+}
+#iframe{
+    height: 750px;
+    width:calc(100% + 28px);
+    background-color: white;
+    box-shadow: rgb(255, 255, 255) 0px 0px 30px 20px inset, rgb(255, 255, 255) -3px -3px 6px 10px inset;}
+
+#yzh-chart{
+    width: 100%;
+    background-color: white;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+#chart{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.bar{
+    display: inline-block;
+    width:20px;
+    height: 75px;
+    background-color: teal;
+    margin-right: 5px;
+    border-color: black ;
+    border-width: 3px;
+
+}
+.bar1{
+    stroke:#b70411
+}
+.bar2{
+    stroke:#7f0000
+}
+.bar3{
+    stroke:#7f0000
+}
+#choropleth-map{
+    width: 100%;
+    margin:0 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-width: 5px;
+    border-color: #000000;
+    border-radius: 2px;
+    background-color: white;
+    /*box-shadow:0px 1px 3px -1px rgba(40, 44, 44, 0.63);*/
+
+}
+#map-title{
+    margin:20px auto 20px auto;
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+.map-subtitle{
+    font-size: 15px;
+    color: #5a5a5a;
+    letter-spacing: 1px;
+    text-align: center;
+    font-weight: normal;
+
+}
+.map-title{
+    font-size:35px;
+    margin:25px auto 25px auto;
+    letter-spacing: 3px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#my-dataviz{
+    margin-bottom:10px;
+    /*z-index:-200;*/
+    width: 1000px;
+    height: 500px;
+}
+#appendix{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    font-size: 12px;
+    color: grey;
+}
+#year_scale{
+    display: flex;
+}
+#present_year,#last_year{
+    line-height: 60px;
+}
+#play{
+    position:relative;top:15px;width:30px;height:30px;
+    /* 让背景图基于容器大小伸缩 */
+}
+
+#slider-simple svg{
+    margin:0 -40px 0 -20px
+}
+#my-color-scale{
+    margin-left: 20px;
+}
+#play-scale{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -20px;
+    z-index: 1;
+}
+.tooltip{
+    position: relative;
+    width: 300px;
+    height: 120px;
+    z-index: -200;
+    border:1px rgba(0, 0, 0, 0);
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow:0px 1px 3px -1px rgba(40, 44, 44, 0.63);
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tooltip-head{
+    margin-top: 10px;
+    margin-bottom: -10px;
+}
+.tooltip-plot-explanation{
+    display: flex;
+}
+.tooltip-plot{
+    height:100px;
+    display: flex;
+    align-items: center;
+}
+.tooltip-explanation{
+    width:150px;
+    align-items: center;
+    font-size:12px;
+    font-weight:800;
+    margin: auto 5px auto 5px;
+    line-height: 18px;
+
+}
+.content-main{
+    font-size: 10px;
+}
+.content-plain{
+    font-size:5px;
+    font-weight: 100;
+    margin-left:75px
+}
+.x-axis{
+    color: rgba(65, 67, 69, 0.62);
+
+}
+.y-axis{
+    color: rgba(65, 67, 69, 0.62);
+}
+.y-axis line{
+    fill:none;
+    stroke : rgba(65, 67, 69, 0.62);
+    shape-rendering:crispEdges;
+}
+.y-axis path{
+    fill:none;
+    stroke : rgba(0, 0, 0, 0.62);
+    shape-rendering:crispEdges;
+}
+#cHeader{
+    width: 100%;
+    height:1000px
+}
+#scatter-map-container{
+    width: 80%;
+    height: 600px;
+    background-color: white;
+
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+#scatter-map{
+    width: 65%;
+    height: 600px;
+}
+#compare-charts{
+    width: 45%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+}
+#compare-charts div{
+    margin-top: 15px;
+}
+#aisa-countries-line{
+    margin-top: 10px;
+}
+#china-line{
+    margin-top: 10px;
+}
+#bottom{
+    color: #ebebeb;
+    width: 100%;
+    height:330px;
+    background-color: maroon;
+    display: flex;
+    flex-direction: column;
+
+}
+.left-right{
+    display: flex;
+    justify-content: center
+}
+#bottom .left{
+    /*width:40%;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 20px 20px 10px;
+    margin: 0px auto auto 17%;
+}
+#source-link img{
+    float: left;
+    height: 20px;
+    margin:5px;
+}
+#bottom .right{
+    width:40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 10px 0 20px;
+    margin: 20px 7% auto auto;
+}
+#bottom .bottom{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    color: rgba(216, 216, 216, 0.76);
+    font-size:16px
+
+}
+#charts-container{
+    width:100%;
+    height:600px;
+    display: flex;
+}
+#zoom-in{
+    width:30%;
+    height:100%
+}
+#small-charts-container{
+    width:70%;
+    height:100%;
+    display:flex;
+    flex-wrap: wrap
+}
+.small-chart{
+    width:180px;
+    height:180px;
+    font-size: 10px;
+}
+.fry_center{
+    text-indent:2em;
+}

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>GTD-Visualization</title>
+    <script type="text/javascript" src="./package/dist/d3.min.js"></script>
+    <script src="./javaScripts/topojson-client.js"></script>
+    <script src="./javaScripts/d3-simple-slider.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./icons/fontello-3e219e74/css/play.css">
+    <link href="css/myCSS.css" rel="stylesheet" type="text/css"/>
+    <link href="css/complicate-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+
+<div id="main">
+    <div id="head">
+
+        <div style="height:100%;display: flex;align-items: center">
+            <a href="https://github.com/cafferyz/GTD-visualization" style="height: 125%">
+                <img src="imgs/LOGO.png" alt="GTD: Global Terrorism Database" style="float: left;height:100%"></a>
+            <div style="display: flex;flex-direction: column">
+                <div>
+                    <div id="head-title">
+                    全球恐袭五十年
+                </div>
+                    <div id="head-subtitle">
+                        ——恐 怖 主 义 数 据 交 互 可 视 化
+                    </div>
+                </div>
+
+<!--                <div id="head-subtitle2">
+                    Global Terrorism Data Visualization
+                </div>-->
+            </div>
+
+        </div>
+
+    </div>
+    <div class="ordinary-excessive">
+        <div class="ordinary-excessive-card">
+            <br/>
+            <div class="fry_center">
+                恐怖主义多指个人和（或）团体使用蓄意的暴力和恐惧来达到政治或意识形态目的。其形成原因繁多复杂，大多与分离主义运动、宗教极端主义或者特定的意识形态相关。恐怖主义除了会造成严重的人员伤亡和经济损失之外，还给当地人民带来巨大的心理恐惧、引发社会的动荡；并且恶化了国家之间的社会政治关系、激化了国际矛盾。几十年来，世界上的恐怖主义局势瞬息万变，一些地区积极进行反恐斗争并取得了成效，一些地区从社会的和平稳定逐渐走入了恐怖主义的无尽苦难，也有一些国家始终笼罩在恐怖主义的阴影之下。因此，我们对全球近52年来的恐怖主义数据进行可视化，并梳理了恐怖主义相关的重要事件，旨在统计恐怖袭击造成的严重后果，分析恐怖主义的发展局势。    
+            </div>
+            <br/>
+            <div class="fry_center">
+                本作品的数据来源主要是马里兰大学帕克分校维护的<a href="https://www.start.umd.edu/gtd/" id="source-link" style="color:black">全球恐怖主义数据库（Global Terrorism Database，简称GTD）</a>。GTD是一个数据全面准确、在学界享有权威的数据库。截至本作品完成时刻，该数据库共包含1970至2021共51年发生于世界各地的200,000余起恐怖事件，以及各个事件发生的具体时间、地理位置、武器信息、伤亡与后果等丰富数据。    
+            </div>
+        </div>
+    </div>
+
+    <div id="yzh-chart">
+        <div class="map-title">
+            <br/>
+            五十年间，受害者的“鲜血”在流淌
+            <br/>
+            <span class="map-subtitle">点击可重复播放“流血”动画</span>
+        </div>
+        <div id="chart"></div>
+    </div>
+    <div class="ordinary-excessive">
+
+        <div class="ordinary-excessive-card">
+            <div class="fry_center">
+                近52年间，全球恐怖袭击的事件数量与造成的伤亡人数呈波动型增长。在1970至1997年间，恐怖袭击数量与伤亡人数均呈现上升趋势，1997至2000年数量稍有缓和。步入21世纪后，著名的”911恐怖袭击事件“导致2001年恐袭导致的伤亡人数陡然增加。进入21世纪后，由于中东地区的战火纷飞和社会动荡，恐怖袭击数量大幅增加，造成了惨重的伤亡损失。
+            </div>
+            <br/>
+            <div class="fry_center">
+                将视角聚焦至恐怖组织的袭击对象，平民最容易成为恐怖组织针对的目标，占全部数量的38%；此外，交通工具、检查点与交通管理者和象征着卫国与反恐的士兵也是恐怖分子进行反动袭击的重点对象。
+            </div>
+        </div>
+    </div>
+
+    <div  id='choropleth-map'>
+        <div class="map-title">
+            <br/>
+            面对恐怖主义，几乎没有国家能够独善其身
+            <br/>
+            <span class="map-subtitle">
+                鼠标悬浮可单独显示该国时间趋势
+            </span>
+        </div>
+        <div id="map-title" class="map-title">
+            &nbsp&nbsp1970 年全球各国遭受恐怖袭击的次数
+        </div>
+        <svg id="my-dataviz" ></svg>
+        <div id="play-scale">
+            <svg id="my-color-scale" width="1600" height="800"></svg>
+            <div id="appendix">
+<!--                <div class="appendix-left">-->
+<!--                    数据来源: Global Terrorism Database-->
+<!--                </div>-->
+<!--                <div class="appendix-right">-->
+<!--                    Plot By: Caffery-->
+<!--                </div>-->
+            </div>
+            <div id="year_scale">
+                <div class="icon-play" ></div>
+                <div id="present_year">1970</div>
+                <div class="col-sm"><div id="slider-simple"></div></div>
+                <div id="last_year">2021</div>
+            </div>
+        </div>
+        <div class="tooltip" style="opacity: 0;position: absolute;top:0">
+            <div class="tooltip-head">
+                None
+            </div>
+            <div class="tooltip-plot-explanation">
+                <div class="tooltip-plot">
+
+                </div>
+                <div class="tooltip-explanation">
+                    <div class="content-main">
+                        The Number of Terrorist Attacks Happened in the USA in 2021 was 219
+                    </div>
+                    <div class="content-plain">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ordinary-excessive">
+        <div class="ordinary-excessive-card">
+            <div class="fry_center">
+                近52年间，世界始终面临着恐怖主义的挑战与威胁。上图将恐怖袭击事件细分至国家，对各国近52年间的恐怖袭击数量以时间轴地图的形式进行展示。1970年至1980年间，恐怖袭击主要发生在欧美地区，哥伦比亚、英国与意大利为恐怖袭击的频发地。1980年至1990年间，哥伦比亚与英国的恐怖袭击数量居高不下，并且扩散到秘鲁、法国、南非与东南亚的泰国等地。1990年至2000年间，世界恐怖袭击的重心逐渐转移至印度、俄罗斯、印度尼西亚等亚洲国家。2000年至今，恐怖主义在全球范围内盛行，印度、巴基斯坦与伊拉克等国成为了恐怖袭击的频发地。在恐怖主义的浪潮下，没有一个国家可以独善其身，世界各国需要团结起来，共同应对恐怖主义势力。
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <div class="map-title" style="padding-bottom: 5px">
+        <br/>
+        全球恐怖主义发展脉络及重要事件
+
+    </div>
+    <div style="width: 90%;height:750px; overflow: hidden">
+        <iframe src="./earth/earthindex-iib.html"  id="iframe" scrolling="yes" frameborder="0">
+        </iframe>
+    </div>
+    <div class="ordinary-excessive">
+        <div class="ordinary-excessive-card">
+            <div class="fry_center">
+                综合各年的恐怖袭击数量、死亡人数、受伤人数、受创国家等数据，该图梳理了全球恐怖主义的发展脉络以及重要事件。1970年初，英美为恐怖袭击的频发区；1976年至1994年，几个骇人听闻的恐怖组织逐渐成立，恐怖主义在暗中蛰伏；1995年开始，恐怖主义快速蔓延发展，1995年至2001年发生的几例恐怖袭击事件带来了重大伤亡——1995年东京地铁沙林毒气事件、1996年斯里兰卡恐怖袭击事件、1998年肯尼亚恐怖袭击事件和2001年著名的911袭击事件分为造成了第二多、第五多、第三多和最多的伤亡人数。2003年美国发动了伊拉克战争，给中东地区带来了无尽苦难。从此，西亚地区的恐怖主义彻底爆发，伊拉克成为全球恐怖活动频繁程度、袭击次数和死亡人数均排名第一的国家。恐怖组织塔利班对阿富汗的占领导致阿富汗是近几年来恐怖袭击发生次数最高的国家。直至现在，西亚和北非的许多国家依旧处于被恐怖主义威胁的困境中。
+            </div>
+            <br/>
+            <div class="fry_center">
+                和平弥足珍贵，发展来之不易。在过去的五十年中，全球恐怖主义的威胁一直存在，给各个国家和地区带来了巨大的挑战。在这漫长的斗争中，许多国家都展现了出色的反恐决心和优秀的反恐成绩，为国际反恐斗争提供了宝贵的经验和借鉴。在今后面对恐怖主义的过程中，我们应该汲取历史经验和教训。无论来自何方，无论形式如何，恐怖主义都是对人类文明的公然挑战。我们需要以更加团结和坚定的步伐前行，推动全球合作，共同打击恐怖主义，维护和平与安全。
+            </div>
+        </div>
+    </div>
+    <br/><br/><br/>
+
+    <div id="bottom">
+        <div class="left-right">
+            <div class="left">
+                <div>
+                    <div>
+                        &nbsp;
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px;font-weight:bold; margin:5px auto 0px auto">
+                        指导教师:
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px; margin:5px auto 12px auto">
+                        北京大学信息管理系  步一教授
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px;font-weight:bold; margin:5px auto 0px auto">
+                        特别感谢：
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px; margin:5px auto 12px auto">
+                        北京大学信息管理系  闫蒲教授
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px;font-weight:bold; margin:5px auto 0px auto">
+                        制作名单:
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px; margin:5px auto 12px auto">
+                        北京大学信息管理系  陈凯瑞、冯如茵、杨芷涵、张恺
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px;font-weight:bold; margin:5px auto 0px auto">
+                        联系邮箱：
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px; margin:5px auto 12px auto">
+                        fengruyin@stu.pku.edu.cn
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px;font-weight:bold; margin:5px auto 0px auto">
+                        数据来源：
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px; margin:5px auto 12px auto">
+                        数据来自<a href="https://www.start.umd.edu/gtd/" id="source-link" style="color: rgba(255,255,255,0.8);"">全球恐怖主义数据库（Global Terrorism Database）</a>
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px; margin:5px auto 12px auto">
+                        部分事例整理自维部分基百科、人民网、环球网、新闻社。
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px;font-weight:bold; margin:5px auto 0px auto">
+                        设计灵感借鉴：
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px; margin:5px auto 12px auto">
+                        <a href="https://www.scmp.com/infographics/article/1284683/iraqs-bloody-toll" id="source-link" style="color: rgba(255,255,255,0.8);">Iraq's bloody toll</a>
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px; margin:5px auto 12px auto">
+                        <a href="https://www.theguardian.com/world/ng-interactive/2020/apr/09/how-coronavirus-spread-across-the-globe-visualised" id="source-link" style="color: rgba(255,255,255,0.8);">How coronavirus spread across the globe-visualised</a>
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px; margin:5px auto 12px auto">
+                        <a href="https://terror.periscopic.com/" id="source-link" style="color: rgba(255,255,255,0.8);">A world of terror</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+            @北京大学 · 信息管理系, 2023
+        </div>
+    </div>
+
+</div>
+
+</body>
+<script type="module" src="ourJS/yzh.js"></script>
+<script type="module" src="ourJS/myGeoJS.js"></script>
+<script type="module" src="ourJS/scatterWorld.js"></script>
+<!-- Create an element where the map will take place -->

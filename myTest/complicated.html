@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>恐怖袭击统计</title>
+  <script src="../javaScripts/d3.min.js"></script>
+  <link href="../css/complicate-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="map-title">
+  全球主要恐怖组织活动情况
+</div>
+<div id="charts-container">
+  <div id="zoom-in">
+    <div id="group-intro">
+      <div id="group-name"></div>
+      <div id="group-attack">
+        <div id="group-attack-region"></div>
+        <div id="group-attack-region-num"></div>
+      </div>
+    </div>
+    <div id="zoom-in-explanation">
+      <div id="squares-explanation">
+<!--        <div style="margin:10px">图例</div>-->
+        <svg id="legend" width="200" height="60"></svg>
+      </div>
+      <div id="exact-num">
+        <div id="event-num" class="exact-num">
+          <span>袭击数量</span>
+          <span class="exact-number"></span>
+        </div>
+        <div id="death-num" class="exact-num">
+          <span>死亡人数</span>
+          <span class="exact-number"></span>
+        </div>
+        <div id="wound-num" class="exact-num">
+          <span>受伤人数</span>
+          <span class="exact-number"></span>
+        </div>
+      </div>
+    </div>
+    <svg id="chart" width="800" height="600"></svg>
+  </div>
+
+  <div id="small-charts-container">
+
+  </div>
+</div>
+
+
+<script src="../ourJS/complicate.js">
+
+</script>
+</body>
+</html>

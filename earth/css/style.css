@@ -1,0 +1,95 @@
+body{
+    font-family:'Microsoft YaHei UI', sans-serif;
+}
+#scrollytelling{
+    width: 60vw;
+    height: 65vh;
+    padding-left: 10vw;
+    padding-top: 0px;
+
+}
+#scrollytelling.outer {
+    padding-right: 2.5vw;
+  }
+  
+#scrollytelling.inner {
+    float: right;
+  }
+#map{
+    width: 60vw;
+    height: 65vh;
+    position: fixed;
+    margin-left: 5vw;
+    margin-top: 0;
+
+}
+#text{
+  width: 25vw;
+  height: 65vh;
+  margin-left:65vw;
+  position: fixed;
+  border-left: 0.1px solid rgb(94, 93, 93);
+  }
+
+
+
+@import url("https://fonts.googleapis.com/css?family=Exo+2:400,700&subset=cyrillic");
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.wrapper {
+  margin-left: 1vw;
+  padding: 0 14% 0 20%;
+  width: 80%;
+  text-align: justify;
+}
+
+article {
+  position: relative;
+  max-width: 900vw;
+  margin-left:-4vw;
+  top:0;
+}
+
+.timeline__nav {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  transition: top 0.3s ease-out;
+}
+.timeline__nav ul {
+  list-style: none;
+  list-style-position: inside;
+  margin: 15px 0;
+}
+.timeline__nav ul li {
+  margin: 15px 0;
+  padding-left: 0;
+  list-style-type: none;
+  color: #000000;
+  /*border-bottom: 1px dotted rgba(0, 0, 0, 0.3);*/
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.timeline__nav ul li.active {
+  font-weight: bold;
+  color: #b60100;
+  /*border-bottom: 1px dotted transparent;*/
+  transform: scale(1.2);
+}
+.timeline__nav ul li:hover {
+  color: #000;
+}
+.timeline__nav {
+  position: fixed;
+  left: 8vw; /* adjust this value to move the timeline more to the left or right */
+  top: 2vw;
+}
+

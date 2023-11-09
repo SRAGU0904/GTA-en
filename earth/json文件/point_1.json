@@ -1,0 +1,14 @@
+{"features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "1",
+        "number":10
+      },
+      "geometry": {
+        "coordinates": [-100,40],
+        "type": "Point"
+      }
+    }
+    ]
+}

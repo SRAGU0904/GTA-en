@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>列表滚动过渡效果</title>
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            overflow-y: scroll;
+        }
+
+        li {
+            height: 100px;
+            opacity: 0;
+            transition: opacity 0.5s linear;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>列表项 1</li>
+    <li>列表项 2</li>
+    <li>列表项 3</li>
+    <li>列表项 4</li>
+    <li>列表项 5</li>    <li>列表项 1</li>
+    <li>列表项 2</li>
+    <li>列表项 3</li>
+    <li>列表项 4</li>
+    <li>列表项 5</li>    <li>列表项 1</li>
+    <li>列表项 2</li>
+    <li>列表项 3</li>
+    <li>列表项 4</li>
+    <li>列表项 5</li>    <li>列表项 1</li>
+    <li>列表项 2</li>
+    <li>列表项 3</li>
+    <li>列表项 4</li>
+    <li>列表项 5</li>
+</ul>
+
+<script>
+    var listItems = document.querySelectorAll("li");
+
+    function updateOpacity() {
+        var viewportHeight = window.innerHeight;
+        var scrollPosition =  document.documentElement.scrollTop;
+
+        console.log(viewportHeight,scrollPosition)
+        listItems.forEach(function(li) {
+            var rect = li.getBoundingClientRect();
+            var liTop = rect.top;
+            var liBottom = rect.bottom;
+
+            // 计算相对于视口的位置
+            var position = (liTop + liBottom) / 2 - (viewportHeight / 2);
+
+            // 根据位置计算透明度
+            var opacity = 1 - Math.abs(position) / (viewportHeight / 2);
+
+            // 设置透明度
+            li.style.opacity = opacity;
+        });
+    }
+
+    window.addEventListener("scroll", updateOpacity);
+    window.addEventListener("resize", updateOpacity);
+
+    // 初始更新一次透明度
+    updateOpacity();
+</script>
+</body>
+</html>
