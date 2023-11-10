@@ -140,8 +140,8 @@ yzh_svg.append("text").attr("x", 495).attr("y", 490).text("traffic warden").styl
 
 
 
-yzh_svg.append("text").attr("x", 770).attr("y", 30).text("Number of incidents").style("font-size", "20px").attr("alignment-baseline","middle").style("fill", "#FFFFFF")
-yzh_svg.append("text").attr("x", 770).attr("y", 170).text("Number of casualties").style("font-size", "20px").attr("alignment-baseline","middle").style("fill", "#FFFFFF")
+yzh_svg.append("text").attr("x", 770).attr("y", 30).text("Incidents").style("font-size", "20px").attr("alignment-baseline","middle").style("fill", "#FFFFFF")
+yzh_svg.append("text").attr("x", 770).attr("y", 170).text("Casualties").style("font-size", "20px").attr("alignment-baseline","middle").style("fill", "#FFFFFF")
 
 
 function animateBars() {
