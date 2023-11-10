@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>GTD-Visualization</title>
+    <script type="text/javascript" src="./package/dist/d3.min.js"></script>
+    <script src="./javaScripts/topojson-client.js"></script>
+    <script src="./javaScripts/d3-simple-slider.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./icons/fontello-3e219e74/css/play.css">
+    <link href="css/myCSS.css" rel="stylesheet" type="text/css"/>
+    <link href="css/complicate-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+
+<div id="main">
+    <div id="head">
+
+        <div style="height:100%;display: flex;align-items: center">
+            <a href="https://github.com/cafferyz/GTD-visualization" style="height: 125%">
+                <img src="imgs/LOGO.png" alt="GTD: Global Terrorism Database" style="float: left;height:100%"></a>
+            <div style="display: flex;flex-direction: column">
+                <div>
+                    <div id="head-title-en">
+                        Fifty Years of Global Terror Attacks
+                </div>
+                    <div id="head-subtitle">
+                        —— Interactive Visualization of Global Terrorism Data
+                    </div>
+                </div>
+
+<!--                <div id="head-subtitle2">
+                    Global Terrorism Data Visualization
+                </div>-->
+            </div>
+
+        </div>
+
+    </div>
+    <div class="ordinary-excessive">
+        <div class="ordinary-excessive-card">
+            <br/>
+            <div class="fry_center">
+                Terrorism, often characterized by deliberate violence and fear tactics employed by individuals and/or groups, is aimed at achieving political or ideological objectives. Its formation is multifaceted and complex, often associated with separatist movements, religious extremism, or specific ideologies. In addition to causing severe casualties and economic loss, terrorism brings about immense psychological terror and social unrest among local populations. It worsens social and political relations between nations while intensifying international conflicts. Over the past decades, the global terrorism landscape has been highly dynamic. Some regions actively engage in counter-terrorism efforts with notable success, while others transition from societal peace and stability into the endless hardships of terrorism. There are also countries that remain enveloped in the shadows of terrorism. Therefore, we visualize the terrorism data from the past 52 years globally, and outline significant terrorism-related events, aiming to assess the grave consequences of terrorist attacks and analyze the development trends of terrorism.
+            </div>
+            <br/>
+            <div class="fry_center">
+                The data for this study primarily derives from <a href="https://www.start.umd.edu/gtd/" id="source-link" style="color:black">the Global Terrorism Database (GTD)</a>, maintained by the University of Maryland, College Park. The GTD is a widely respected and authoritative database known for its comprehensive and accurate collection of data. As of the completion of this work, the database encompasses over 200,000 terrorist incidents that have occurred worldwide from 1970 to 2021, spanning a period of 51 years. It provides extensive information on the specific time, geographical location, weapon details, casualties, and consequences associated with each event.
+            </div>
+        </div>
+    </div>
+
+    <div id="yzh-chart">
+        <div class="map-title">
+            <br/>
+            Over the course of five decades, 
+            <br/>
+            the "blood" of victims has been shed
+            <br/>
+            <span class="map-subtitle">Click to replay the "bloodshed" animation</span>
+        </div>
+        <div id="chart"></div>
+    </div>
+    <div class="ordinary-excessive">
+
+        <div class="ordinary-excessive-card">
+            <div class="fry_center">
+                Over the past 52 years, the number of global terrorist attacks and the resulting casualties have exhibited a fluctuating pattern of growth. Between 1970 and 1997, both the number of terrorist attacks and casualties showed an upward trend, with a slight easing in numbers between 1997 and 2000. However, with the advent of the 21st century, the infamous "9/11 terrorist attacks" in 2001 led to a steep increase in the number of casualties caused by terrorism. In the 21st century, the ongoing warfare and social turmoil in the Middle East have contributed to a significant rise in the number of terrorist attacks, resulting in devastating human losses.    
+            </div>
+            <br/>
+            <div class="fry_center">
+                Shifting the focus to the targets of terrorist organizations, civilians are the most vulnerable group, accounting for 38% of the total number of attacks. Additionally, transportation facilities, checkpoints, traffic controllers, and soldiers symbolizing national defense and counterterrorism efforts are also prime targets for extremist attacks.
+            </div>
+        </div>
+    </div>
+
+    <div  id='choropleth-map'>
+        <div class="map-title">
+            <br/>
+            In the face of terrorism, 
+            <br/>
+            there are few nations that can effectively fend for themselves
+            <br/>
+            <span class="map-subtitle">
+                Hovering over the mouse will display the temporal trends for each country individually
+            </span>
+        </div>
+        <div id="map-title" class="map-title">
+            The number of terrorist attacks experienced by countries worldwide in &nbsp&nbsp1970
+        </div>
+        <svg id="my-dataviz" ></svg>
+        <div id="play-scale">
+            <svg id="my-color-scale" width="1600" height="800"></svg>
+            <div id="appendix">
+<!--                <div class="appendix-left">-->
+<!--                    数据来源: Global Terrorism Database-->
+<!--                </div>-->
+<!--                <div class="appendix-right">-->
+<!--                    Plot By: Caffery-->
+<!--                </div>-->
+            </div>
+            <div id="year_scale">
+                <div class="icon-play" ></div>
+                <div id="present_year">1970</div>
+                <div class="col-sm"><div id="slider-simple"></div></div>
+                <div id="last_year">2021</div>
+            </div>
+        </div>
+        <div class="tooltip" style="opacity: 0;position: absolute;top:0">
+            <div class="tooltip-head">
+                None
+            </div>
+            <div class="tooltip-plot-explanation">
+                <div class="tooltip-plot">
+
+                </div>
+                <div class="tooltip-explanation">
+                    <div class="content-main">
+                        The Number of Terrorist Attacks Happened in the USA in 2021 was 219
+                    </div>
+                    <div class="content-plain">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ordinary-excessive">
+        <div class="ordinary-excessive-card">
+            <div class="fry_center">
+                Over the past 52 years, the world has consistently faced the challenges and threats posed by terrorism. The figure below categorizes terrorist attacks by country and presents the number of attacks over the past 52 years in the form of a timeline map. From 1970 to 1980, terrorist attacks primarily occurred in Europe and the Americas, with Colombia, the United Kingdom, and Italy being hotspots for such attacks. Between 1980 and 1990, Colombia and the UK continued to experience high numbers of terrorist attacks, which also spread to countries like Peru, France, South Africa, and Thailand in Southeast Asia. From 1990 to 2000, the epicenter of global terrorist attacks gradually shifted towards Asian countries such as India, Russia, and Indonesia. Since 2000, terrorism has proliferated worldwide, with countries like India, Pakistan, and Iraq becoming frequent targets of terrorist attacks. In the face of this wave of terrorism, no single country can protect itself alone; it is crucial for nations around the world to unite and collectively address the forces of terrorism.    
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <div class="map-title" style="padding-bottom: 5px">
+        <br/>
+        The Development Trajectory and Significant Events
+        <br/>
+         of Global Terrorism
+
+    </div>
+    <div style="width: 90%;height:750px; overflow: hidden">
+        <iframe src="./earth/earthindex-iib_eng.html"  id="iframe" scrolling="yes" frameborder="0">
+        </iframe>
+    </div>
+    <div class="ordinary-excessive">
+        <div class="ordinary-excessive-card">
+            <div class="fry_center">
+                By integrating data on the number of terrorist attacks, fatalities, injuries, and affected countries over the years, this graph delineates the development trajectory of global terrorism and highlights significant events. In the early 1970s, the United Kingdom and the United States were hotbeds for frequent terrorist attacks. From 1976 to 1994, several notorious terrorist organizations gradually emerged, while terrorism remained dormant in the shadows. Starting from 1995, terrorism experienced rapid spread and growth. Several major terrorist attacks during the period from 1995 to 2001 resulted in significant casualties. These included the 1995 Tokyo subway sarin gas attack, the 1996 Sri Lanka terrorist attacks, the 1998 Kenya terrorist attacks, and the infamous 9/11 attacks in 2001, ranking second, fifth, third, and first, respectively, in terms of the number of fatalities. The 2003 Iraq War launched by the United States brought endless suffering to the Middle East region. Consequently, terrorism erupted extensively in Western Asia, with Iraq becoming the country with the highest frequency of global terrorist activities, number of attacks, and death toll. The Taliban's occupation of Afghanistan has made it the country with the highest number of terrorist attacks in recent years. Even today, many countries in Western Asia and North Africa continue to grapple with the threats posed by terrorism. 
+            </div>
+            <br/>
+            <div class="fry_center">
+                Peace is immensely precious and development is hard-won. Over the past fifty years, the threat of global terrorism has persisted, posing significant challenges to countries and regions worldwide. Throughout this protracted struggle, many nations have demonstrated remarkable determination and achieved outstanding results in counterterrorism efforts, providing valuable experiences and insights for international counterterrorism endeavors. As we confront terrorism in the future, it is imperative that we draw upon historical experiences and lessons. Terrorism, regardless of its origin or form, constitutes a blatant challenge to human civilization. We must forge ahead with greater unity and unwavering determination, promoting global cooperation to collectively combat terrorism and uphold peace and security.    
+            </div>
+        </div>
+    </div>
+    <br/><br/><br/>
+
+    <div id="bottom">
+        <div class="left-right">
+            <div class="left">
+                <div>
+                    <div>
+                        &nbsp;
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px;font-weight:bold; margin:5px auto 0px auto">
+                        Supervising Instructor:
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px; margin:5px auto 12px auto">
+                        Peking University, Professor Yi Bu
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px;font-weight:bold; margin:5px auto 0px auto">
+                        Special thanks：
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px; margin:5px auto 12px auto">
+                        Peking University, Professor Pu Yan
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px;font-weight:bold; margin:5px auto 0px auto">
+                        Production crew:
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px; margin:5px auto 12px auto">
+                        Peking University, Kairui Chen, Kai Zhang, Ruyin Feng, Zhihan Yang
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px;font-weight:bold; margin:5px auto 0px auto">
+                        Email Address：
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px; margin:5px auto 12px auto">
+                        fengruyin@stu.pku.edu.cn
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px;font-weight:bold; margin:5px auto 0px auto">
+                        Data Source：
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px; margin:5px auto 12px auto">
+                        <a href="https://www.start.umd.edu/gtd/" id="source-link" style="color: rgba(255,255,255,0.8);"> the Global Terrorism Database (GTD)</a>
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px; margin:5px auto 12px auto">
+                        Some examples are sourced from Wikipedia, People's Daily, Global Times, and News Agency.
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px;font-weight:bold; margin:5px auto 0px auto">
+                        Design inspiration referenced：
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px; margin:5px auto 12px auto">
+                        <a href="https://www.scmp.com/infographics/article/1284683/iraqs-bloody-toll" id="source-link" style="color: rgba(255,255,255,0.8);">Iraq's bloody toll</a>
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px; margin:5px auto 12px auto">
+                        <a href="https://www.theguardian.com/world/ng-interactive/2020/apr/09/how-coronavirus-spread-across-the-globe-visualised" id="source-link" style="color: rgba(255,255,255,0.8);">How coronavirus spread across the globe-visualised</a>
+                    </div>
+                    <div style="color:rgba(255,255,255,0.9);font-size:18px; margin:5px auto 12px auto">
+                        <a href="https://terror.periscopic.com/" id="source-link" style="color: rgba(255,255,255,0.8);">A world of terror</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+            @Department of Information Management, Peking University, 2023
+        </div>
+    </div>
+
+</div>
+
+</body>
+<script type="module" src="ourJS/yzh.js"></script>
+<script type="module" src="ourJS/myGeoJS.js"></script>
+<script type="module" src="ourJS/scatterWorld.js"></script>
+<!-- Create an element where the map will take place -->
